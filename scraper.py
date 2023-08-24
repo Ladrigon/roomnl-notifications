@@ -20,7 +20,7 @@ def send_to_telegram(message):
     except Exception as e:
         print(e)
 
-chrome_service = Service(ChromeDriverManager().install())
+chrome_service = Service()
 
 chrome_options = Options()
 options = [
@@ -54,3 +54,5 @@ room_ids_old = np.loadtxt("rooms.csv", dtype = str)
 if not np.array_equal(np.sort(room_ids_new.flat), np.sort(room_ids_old.flat)):
     send_to_telegram("New room available!!!")
     np.savetxt("rooms.csv", room_ids, fmt='%s')
+
+driver.quit()
