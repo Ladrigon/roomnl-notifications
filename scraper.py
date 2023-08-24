@@ -51,6 +51,8 @@ room_ids_new = np.array(room_ids)
 
 room_ids_old = np.loadtxt("rooms.csv", dtype = str)
 
+print(room_ids_old)
+
 if not np.array_equal(np.sort(room_ids_new.flat), np.sort(room_ids_old.flat)):
     send_to_telegram("New room available!!!")
     np.savetxt("rooms.csv", room_ids, fmt='%s')
